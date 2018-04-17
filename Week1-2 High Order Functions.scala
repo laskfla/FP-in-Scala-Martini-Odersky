@@ -1,4 +1,4 @@
------------original code------------
+-----------naive version of diffent "sums" ------------
 def sumInts(a:Int, b:Int) :Int = {
     if(a>b) 0 else a + sumInts(a + 1, b) 
 }
@@ -20,6 +20,7 @@ def sumFact(a:Int, b:Int) : Int = {
 }
 sumFact(1,10)
 
+*Now, let us try to optimize the above codes:*
 -----------first attempt---------------
 We see the common part of these code, only difference in the function to process each int .
 so make that function as a parameter.
