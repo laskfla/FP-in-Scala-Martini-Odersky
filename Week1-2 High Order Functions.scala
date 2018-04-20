@@ -200,11 +200,20 @@ def sum(f:Int => Int)(a:Int,b:Int) : Int = {
     if(a>b) 0 else f(a) + sum(f)(a + 1 , b)
 }
 changed this to tail-recursion :
+--version1--
 def sum(f:Int => Int)(a:Int,b:Int) : Int = {
     def loop(x:Int,acc:Int) :Int = {
         if(x > b) acc else loop(x + 1,f(x) + acc) 
     }
     loop(a,0)
+}
+
+--version2 with @tailrec and currying---
+import scala.annotation.tailrec
+@tailrec
+def sum(f:Int => Int)(a:Int,b:Int)(acc:Int) : Int = {
+        if(a > b) acc else sum(f)(a+1,b)(acc+f(a))
+
 }
 
 for the mapReduce one : 
